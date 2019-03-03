@@ -1,0 +1,12 @@
+from django.db import connections
+from django.db.utils import OperationalError
+db_conn = connections['default']
+try:
+    c = db_conn.cursor()
+except OperationalError:
+    connected = False
+    print("fail")
+
+else:
+    connected = True
+    print("success")
